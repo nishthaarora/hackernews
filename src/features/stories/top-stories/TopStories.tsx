@@ -54,7 +54,7 @@ export function TopStories() {
       {storiesCount > stories.length && (
         <>
           <ShowMoreButton onClick={handleShowMore} />
-          {hasStoryDetails === "loading" && <div>loading</div>}
+          {hasStoryDetails === "loading" && <div>loading...</div>}
         </>
       )}
     </div>

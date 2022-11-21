@@ -21,7 +21,6 @@ export function SavedStories() {
   const apiCalledRef = useRef(false);
 
   const stories = useAppSelector(savedStoriesWithData);
-  // const [showEmptyState, setShowEmptyState] = useState(false);
   const [savedItemsCount, setSavedItemsCount] = useState(
     getLocalStorageItems().length
   );
@@ -55,7 +54,7 @@ export function SavedStories() {
   };
 
   if (savedItemsCount === 0) {
-    return <div>No saved items in the list</div>;
+    return <div className={styles.zeroState}>No saved items in the list</div>;
   }
 
   return (
