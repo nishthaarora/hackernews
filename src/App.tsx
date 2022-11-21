@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+// import { useEffect, useState } from "react";
 import { TopStories, SavedStories } from "./features/stories";
 
 import {
@@ -12,23 +12,24 @@ import logo from "./hacker-news-logo.svg";
 import styles from "./App.module.css";
 
 function App() {
-  const [theme, setTheme] = useState("light");
+  // this is semi working solution to dark theme mode therefore commenting the code for now
+  // const [theme, setTheme] = useState("light");
 
-  const toggleTheme = () => {
-    if (theme === "light") {
-      setTheme("dark");
-    } else {
-      setTheme("light");
-    }
-  };
+  // const toggleTheme = () => {
+  //   if (theme === "light") {
+  //     setTheme("dark");
+  //   } else {
+  //     setTheme("light");
+  //   }
+  // };
 
-  useEffect(() => {
-    document.body.className = theme;
-  });
+  // useEffect(() => {
+  //   document.body.className = theme;
+  // });
 
   return (
     <Router>
-      <button onClick={toggleTheme}>Toggle Theme</button>
+      {/* <button onClick={toggleTheme}>Toggle Theme</button> */}
       <div className={styles.content}>
         <nav>
           <ul className={styles.navList}>
