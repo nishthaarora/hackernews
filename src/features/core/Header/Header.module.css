@@ -1,0 +1,18 @@
+.headerContainer {
+  display: flex;
+  align-items: center;
+}
+
+.url {
+  font-size: 10px;
+  color: rgba(0, 0, 0, 0.5);
+  text-decoration: none;
+  font-family: Open Sans;
+  margin-left: 10px;
+}
+
+.heading {
+  font-size: 18px;
+  font-family: Ubuntu Mono;
+  margin: 10px 0 10px 0;
+}

@@ -1,0 +1,12 @@
+.displayInRow {
+  display: flex;
+  align-items: center;
+}
+
+.listItems {
+  margin-bottom: 26px;
+}
+
+.listItems::marker {
+  color: rgba(0, 0, 0, 0.5);
+}

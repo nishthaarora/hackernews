@@ -1,57 +1,79 @@
-import React from 'react';
-import logo from './logo.svg';
-import { Counter } from './features/counter/Counter';
-import './App.css';
+import { useEffect, useState } from "react";
+import { TopStories, SavedStories } from "./features/stories";
+
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  NavLink,
+} from "react-router-dom";
+import logo from "./hacker-news-logo.svg";
+
+import styles from "./App.module.css";
 
 function App() {
+  const [theme, setTheme] = useState("light");
+
+  const toggleTheme = () => {
+    if (theme === "light") {
+      setTheme("dark");
+    } else {
+      setTheme("light");
+    }
+  };
+
+  useEffect(() => {
+    document.body.className = theme;
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Counter />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <span>
-          <span>Learn </span>
-          <a
-            className="App-link"
-            href="https://reactjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux
-          </a>
-          <span>, </span>
-          <a
-            className="App-link"
-            href="https://redux-toolkit.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Redux Toolkit
-          </a>
-          ,<span> and </span>
-          <a
-            className="App-link"
-            href="https://react-redux.js.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            React Redux
-          </a>
-        </span>
-      </header>
-    </div>
+    <Router>
+      <button onClick={toggleTheme}>Toggle Theme</button>
+      <div className={styles.content}>
+        <nav>
+          <ul className={styles.navList}>
+            <li>
+              <header className={styles.logo}>
+                <img src={logo} alt="logo" />
+              </header>
+            </li>
+            <li>
+              <div className={styles.logoText}>Hacker News</div>
+            </li>
+            <li>
+              <NavLink
+                className={(navData) => {
+                  return navData.isActive
+                    ? `${styles.navLinksLatest} ${styles.active}`
+                    : styles.navLinksLatest;
+                }}
+                to="/"
+              >
+                latest
+              </NavLink>
+            </li>
+            &nbsp;|&nbsp;
+            <li>
+              <NavLink
+                className={(navData) => {
+                  return navData.isActive
+                    ? `${styles.navLinks} ${styles.active}`
+                    : styles.navLinks;
+                }}
+                to="starred"
+              >
+                starred
+              </NavLink>
+            </li>
+          </ul>
+        </nav>
+
+        <Routes>
+          <Route path="/" element={<TopStories />} />
+          <Route path="/starred" element={<SavedStories />} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 

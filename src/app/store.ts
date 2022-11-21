@@ -1,9 +1,13 @@
-import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
+import topStoriesReducer from "../features/stories/top-stories/topStoriesSlice";
+import savedStoriesReducer from "../features/stories/saved-stories/savedStoriesSlice";
+import storiesReducer from "../features/stories-samestore/storiesSlice";
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    topStories: topStoriesReducer,
+    savedStories: savedStoriesReducer,
+    stories: storiesReducer,
   },
 });
 
